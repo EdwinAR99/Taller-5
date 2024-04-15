@@ -1,0 +1,14 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Spring Boot-AsstApplication<ASST>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "co.edu.unicauca.ASST.AsstApplication",
+            "projectName": "ASST",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env"
+        }
+    ]
+}

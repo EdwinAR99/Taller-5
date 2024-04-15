@@ -1,14 +1,15 @@
 package co.edu.unicauca.ASST.model;
 
-import org.hibernate.mapping.List;
-import java.util.List;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import java.util.List;
 
 @Entity
-@Getter @Setter @NoArgsConstructor
+@Getter
+@Setter
+@NoArgsConstructor
 public class Pregunta {
 
     @Id
@@ -16,15 +17,12 @@ public class Pregunta {
     private int idPregunta;
     private String nombre;
     @ManyToOne
-    @JoinColumn(name="idTipoPregunta",nullable = false)
+    @JoinColumn(name = "idTipoPregunta", nullable = false)
     private TipoPregunta objTipoPregunta;
     @ManyToOne
-    @JoinColumn(name="idCuestionario",nullable = false)
+    @JoinColumn(name = "idCuestionario", nullable = false)
     private Cuestionario objCuestionario;
-
     @OneToMany(fetch = FetchType.EAGER, mappedBy = "objPregunta")
     private List<Respuesta> listaRespuesta;
-
-
 
 }

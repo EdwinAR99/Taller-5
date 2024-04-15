@@ -12,7 +12,11 @@ public class Departamento {
    @Id
    @GeneratedValue(strategy = GenerationType.IDENTITY)
    private int idDepartamento;
+
+   @Column
    private String nombreDep;
+
+   @Column
    private String descripcion;
 
    @ManyToMany(fetch = FetchType.EAGER)

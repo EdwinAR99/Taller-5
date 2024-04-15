@@ -9,7 +9,10 @@ import java.util.List;
 @Getter @Setter @NoArgsConstructor
 public class Docente extends Persona{
 
+   @Column
    private String correo;
+
+   @Column
    private String vinculacion;
 
    @OneToOne(mappedBy = "objDocente")
@@ -18,6 +21,9 @@ public class Docente extends Persona{
    @ManyToMany(fetch = FetchType.EAGER)
    @JoinTable(name = "departamentoDocentes", joinColumns = @JoinColumn(name = "idPersona"), inverseJoinColumns = @JoinColumn(name = "idDepartamento"))
    private List<Departamento> listDepartamentos;
+
+   @OneToMany(fetch = FetchType.EAGER)
+   private List<Respuesta> listRespuestas;
 
    public Docente(int idPersona,
                   String tipoIdentificacion,

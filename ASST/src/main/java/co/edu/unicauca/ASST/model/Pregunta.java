@@ -15,14 +15,19 @@ public class Pregunta {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int idPregunta;
+
+    @Column
     private String nombre;
+
     @ManyToOne
     @JoinColumn(name = "idTipoPregunta", nullable = false)
     private TipoPregunta objTipoPregunta;
+
     @ManyToOne
     @JoinColumn(name = "idCuestionario", nullable = false)
     private Cuestionario objCuestionario;
-    @OneToMany(fetch = FetchType.EAGER, mappedBy = "objPregunta")
+
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "objPregunta")
     private List<Respuesta> listaRespuesta;
 
 }

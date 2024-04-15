@@ -10,7 +10,11 @@ public class Telefono {
    @Id
    @GeneratedValue(strategy = GenerationType.IDENTITY)
    private int idTelefono;
+
+   @Column
    private String tipoTelefono;
+
+   @Column
    private String numero;
 
    @OneToOne

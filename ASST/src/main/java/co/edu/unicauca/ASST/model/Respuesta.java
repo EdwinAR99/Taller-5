@@ -15,6 +15,9 @@ public class Respuesta {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int idRespuesta;
 
+    @Column
+    private String descripcion;
+
     @ManyToOne
     @JoinColumn(name = "idPersona", nullable = false)
     private Persona objPersona;

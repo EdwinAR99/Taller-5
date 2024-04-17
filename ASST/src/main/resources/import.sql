@@ -1,9 +1,3 @@
---INSERT INTO `tipopregunta` (`descripcion`, `nombre`) VALUES ('Pregunta de opción múltiple', 'Opción Múltiple');
---INSERT INTO `tipopregunta` (`descripcion`, `nombre`) VALUES ('Pregunta de verdadero/falso', 'Verdadero/Falso');
---INSERT INTO `tipopregunta` (`descripcion`, `nombre`) VALUES ('Pregunta de respuesta corta', 'Respuesta Corta');
---INSERT INTO `tipopregunta` (`descripcion`, `nombre`) VALUES ('Pregunta de respuesta larga', 'Respuesta Larga');
-
-
 INSERT INTO `departamento` (`descripcion`, `nombreDep`) VALUES ('Departamento de Matematicas', 'Matematicas');
 INSERT INTO `departamento` (`descripcion`, `nombreDep`) VALUES ('Departamento de Informatica', 'Informatica');
 INSERT INTO `departamento` (`descripcion`, `nombreDep`) VALUES ('Departamento de Historia', 'Historia');

@@ -1,16 +1,13 @@
 package co.edu.unicauca.ASST;
 
-import co.edu.unicauca.ASST.model.Cuestionario;
-import co.edu.unicauca.ASST.model.Pregunta;
-import co.edu.unicauca.ASST.model.TipoPregunta;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.transaction.annotation.Transactional;
 
-import co.edu.unicauca.ASST.Repository.ICuestionarioRepository;
-import co.edu.unicauca.ASST.Repository.IDocenteRepository;
+import co.edu.unicauca.ASST.model.*;
+import co.edu.unicauca.ASST.repository.*;
 
 @SpringBootApplication
 @Transactional
@@ -20,7 +17,22 @@ public class AsstApplication implements CommandLineRunner {
 	private ICuestionarioRepository cuestionarioRepository;
 
 	@Autowired
+	private IDepartamentoRepository departamentoRepository;
+
+	@Autowired
 	private IDocenteRepository docenteRepository;
+
+	@Autowired
+	private IPreguntaRepository preguntaRepository;
+
+	@Autowired
+	private IRespuestaRepository respuestaRepository;
+
+	@Autowired
+	private ITelefonoRepository telefonoRepository;
+
+	@Autowired
+	private ITipoPreguntaRepository tipoPreguntaRepository;
 
 	public static void main(String[] args) {
 		SpringApplication.run(AsstApplication.class, args);

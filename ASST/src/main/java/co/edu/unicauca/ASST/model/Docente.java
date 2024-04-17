@@ -7,8 +7,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-@Getter @Setter @AllArgsConstructor
-public class Docente extends Persona{
+@Getter
+@Setter
+public class Docente extends Persona {
 
    @Column
    private String correo;
@@ -32,15 +33,22 @@ public class Docente extends Persona{
    }
 
    public Docente(int idPersona,
-                  String tipoIdentificacion,
-                  String numeroIdentificacion,
-                  String nombres,
-                  String apellidos,
-                  String correo,
-                  String vinculacion){
+         String tipoIdentificacion,
+         String numeroIdentificacion,
+         String nombres,
+         String apellidos,
+         String correo,
+         String vinculacion) {
       super(idPersona, tipoIdentificacion, numeroIdentificacion, nombres, apellidos);
       this.correo = correo;
       this.vinculacion = vinculacion;
    }
 
+   public void addDepartamento(Departamento dpto) {
+      this.listDepartamentos.add(dpto);
+   }
+
+   public void addRespuesta(Respuesta objRespuesta) {
+      this.listRespuestas.add(objRespuesta);
+   }
 }

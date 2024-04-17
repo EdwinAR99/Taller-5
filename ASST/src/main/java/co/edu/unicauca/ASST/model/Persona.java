@@ -24,8 +24,4 @@ public class Persona {
    @Column
    private String apellidos;
 
-   public Persona(int idPersona) {
-      this.idPersona = idPersona;
-   }
-
 }

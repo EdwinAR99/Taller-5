@@ -77,6 +77,7 @@ public class AsstApplication implements CommandLineRunner {
 		pregunta5.setEnunciado("¿Cuál es el océano más grande?");
 
 		// Relacionar objetos
+		// BORRAR DE AQUI
 		// Pregunta con tipoPregunta
 		tipo1.addPregunta(pregunta1);
 		tipo1.addPregunta(pregunta3);
@@ -85,12 +86,15 @@ public class AsstApplication implements CommandLineRunner {
 		tipo2.addPregunta(pregunta2);
 		tipo2.addPregunta(pregunta4);
 
+		this.tipoPreguntaRepository.save(tipo1);
+		this.tipoPreguntaRepository.save(tipo2);
+		// BORRAR HASTA AQUI
+
 		pregunta1.setObjTipoPregunta(tipo1);
 		pregunta2.setObjTipoPregunta(tipo2);
 		pregunta3.setObjTipoPregunta(tipo1);
 		pregunta4.setObjTipoPregunta(tipo2);
 		pregunta5.setObjTipoPregunta(tipo1);
-
 
 		// Cuestionario con pregunta
 		pregunta1.setObjCuestionario(cuestionario);
@@ -108,7 +112,7 @@ public class AsstApplication implements CommandLineRunner {
 		pregunta5.setObjCuestionario(cuestionario);
 		cuestionario.addPregunta(pregunta5);
 
-		cuestionarioRepository.save(cuestionario);
+		this.cuestionarioRepository.save(cuestionario);
 	}
 
 	private void registrarDocente() {

@@ -1,4 +1,4 @@
-package co.edu.unicauca.ASST.Repository;
+package co.edu.unicauca.ASST.repository;
 
 import org.springframework.data.repository.CrudRepository;
 

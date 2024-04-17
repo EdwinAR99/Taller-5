@@ -41,6 +41,7 @@ public class AsstApplication implements CommandLineRunner {
 	@Override
 	public void run(String... args) throws Exception {
 		// Agregar cuestionario
+		System.out.println("Edwin care chimba");
 		crearCuestionionario();
 	}
 
@@ -118,6 +119,7 @@ public class AsstApplication implements CommandLineRunner {
 	private void registrarDocente() {
 
 	}
+
 
 }
 

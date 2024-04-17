@@ -3,10 +3,11 @@ package co.edu.unicauca.ASST.model;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-@Getter @Setter @NoArgsConstructor @AllArgsConstructor
+@Getter @Setter @AllArgsConstructor
 public class Departamento {
 
    @Id
@@ -22,5 +23,9 @@ public class Departamento {
    @ManyToMany(fetch = FetchType.EAGER)
    @JoinTable(name = "departamentoDocentes", joinColumns = @JoinColumn(name = "idDepartamento"), inverseJoinColumns = @JoinColumn(name = "idPersona"))
    private List<Docente> listaDocentes;
+
+   public Departamento() {
+      this.listaDocentes = new ArrayList<Docente>();
+   }
 
 }

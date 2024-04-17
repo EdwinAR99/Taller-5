@@ -1,14 +1,16 @@
 package co.edu.unicauca.ASST.model;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-@Getter @Setter @NoArgsConstructor
+@Getter @Setter @AllArgsConstructor
 public class TipoPregunta {
 
     @Id
@@ -23,5 +25,13 @@ public class TipoPregunta {
 
     @OneToMany(fetch = FetchType.EAGER, mappedBy = "objTipoPregunta")
     private List<Pregunta> listPreguntas;
+
+    public TipoPregunta() {
+        this.listPreguntas = new ArrayList<Pregunta>();
+    }
+
+    public void addPregunta(Pregunta pregunta){
+        this.listPreguntas.add(pregunta);
+    }
 
 }

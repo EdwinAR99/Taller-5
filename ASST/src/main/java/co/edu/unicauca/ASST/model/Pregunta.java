@@ -1,15 +1,16 @@
 package co.edu.unicauca.ASST.model;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-@Getter
-@Setter
-@NoArgsConstructor
+@Getter @Setter @AllArgsConstructor
 public class Pregunta {
 
     @Id
@@ -17,7 +18,7 @@ public class Pregunta {
     private int idPregunta;
 
     @Column
-    private String nombre;
+    private String enunciado;
 
     @ManyToOne
     @JoinColumn(name = "idTipoPregunta", nullable = false)
@@ -28,6 +29,14 @@ public class Pregunta {
     private Cuestionario objCuestionario;
 
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "objPregunta")
-    private List<Respuesta> listaRespuesta;
+    private List<Respuesta> listaRespuestas;
+
+    public Pregunta() {
+        this.listaRespuestas = new ArrayList<Respuesta>();
+    }
+
+    public void addRespuesta(Respuesta respuesta){
+        this.listaRespuestas.add(respuesta);
+    }
 
 }

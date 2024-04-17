@@ -3,10 +3,11 @@ package co.edu.unicauca.ASST.model;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-@Getter @Setter @NoArgsConstructor
+@Getter @Setter @AllArgsConstructor
 public class Docente extends Persona{
 
    @Column
@@ -22,8 +23,13 @@ public class Docente extends Persona{
    @JoinTable(name = "departamentoDocentes", joinColumns = @JoinColumn(name = "idPersona"), inverseJoinColumns = @JoinColumn(name = "idDepartamento"))
    private List<Departamento> listDepartamentos;
 
-   @OneToMany(fetch = FetchType.EAGER)
+   @OneToMany(fetch = FetchType.EAGER, mappedBy = "objPersona")
    private List<Respuesta> listRespuestas;
+
+   public  Docente() {
+      this.listDepartamentos = new ArrayList<Departamento>();
+      this.listRespuestas = new ArrayList<Respuesta>();
+   }
 
    public Docente(int idPersona,
                   String tipoIdentificacion,

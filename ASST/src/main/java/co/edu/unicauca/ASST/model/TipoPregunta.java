@@ -23,7 +23,7 @@ public class TipoPregunta {
     @Column
     private String descripcion;
 
-    @OneToMany(fetch = FetchType.EAGER, mappedBy = "objTipoPregunta")
+    @OneToMany(fetch = FetchType.EAGER, cascade = {CascadeType.MERGE} , mappedBy = "objTipoPregunta")
     private List<Pregunta> listPreguntas;
 
     public TipoPregunta() {

@@ -24,7 +24,7 @@ public class Cuestionario {
     @Column
     private String descripcion;
 
-    @OneToMany(fetch = FetchType.EAGER, mappedBy = "objCuestionario")
+    @OneToMany(fetch = FetchType.EAGER, cascade = {CascadeType.PERSIST, CascadeType.REMOVE}, mappedBy = "objCuestionario")
     private List<Pregunta> listPreguntas;
 
     public Cuestionario() {

@@ -28,7 +28,7 @@ public class Pregunta {
     @JoinColumn(name = "idCuestionario", nullable = false)
     private Cuestionario objCuestionario;
 
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "objPregunta")
+    @OneToMany(fetch = FetchType.LAZY, cascade = {CascadeType.ALL}, mappedBy = "objPregunta")
     private List<Respuesta> listaRespuestas;
 
     public Pregunta() {

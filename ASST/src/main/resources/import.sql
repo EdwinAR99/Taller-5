@@ -5,7 +5,7 @@
 
 
 INSERT INTO `departamento` (`descripcion`, `nombreDep`) VALUES ('Departamento de Matemáticas', 'Matemáticas');
-INSERT INTO `departamento` (`descripcion`, `nombreDep`) VALUES ('Departamento de Informática', 'Informática');
+INSERT INTO `departamento` (`descripcion`, `nombreDep`) VALUES ('Departamento de Sistemas', 'Sistemas');
 INSERT INTO `departamento` (`descripcion`, `nombreDep`) VALUES ('Departamento de Historia', 'Historia');
 INSERT INTO `departamento` (`descripcion`, `nombreDep`) VALUES ('Departamento de Física', 'Física');
 INSERT INTO `departamento` (`descripcion`, `nombreDep`) VALUES ('Departamento de Biología', 'Biología');

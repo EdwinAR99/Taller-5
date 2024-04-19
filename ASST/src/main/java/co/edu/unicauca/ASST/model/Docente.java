@@ -7,8 +7,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-@Getter @Setter @AllArgsConstructor
-public class Docente extends Persona{
+@Getter
+@Setter
+public class Docente extends Persona {
 
    @Column
    private String correo;
@@ -16,10 +17,10 @@ public class Docente extends Persona{
    @Column
    private String vinculacion;
 
-   @OneToOne(mappedBy = "objDocente")
+   @OneToOne(mappedBy = "objDocente",cascade = {CascadeType.ALL})
    private Telefono objTelefono;
 
-   @ManyToMany(fetch = FetchType.EAGER)
+   @ManyToMany(fetch = FetchType.EAGER,cascade = {CascadeType.PERSIST})
    @JoinTable(name = "departamentoDocentes", joinColumns = @JoinColumn(name = "idPersona"), inverseJoinColumns = @JoinColumn(name = "idDepartamento"))
    private List<Departamento> listDepartamentos;
 
@@ -32,15 +33,24 @@ public class Docente extends Persona{
    }
 
    public Docente(int idPersona,
-                  String tipoIdentificacion,
-                  String numeroIdentificacion,
-                  String nombres,
-                  String apellidos,
-                  String correo,
-                  String vinculacion){
+         String tipoIdentificacion,
+         String numeroIdentificacion,
+         String nombres,
+         String apellidos,
+         String correo,
+         String vinculacion) {
       super(idPersona, tipoIdentificacion, numeroIdentificacion, nombres, apellidos);
       this.correo = correo;
       this.vinculacion = vinculacion;
+      this.listDepartamentos = new ArrayList<Departamento>();
+      this.listRespuestas = new ArrayList<Respuesta>();
    }
 
+   public void addDepartamento(Departamento dpto) {
+      this.listDepartamentos.add(dpto);
+   }
+
+   public void addRespuesta(Respuesta objRespuesta) {
+      this.listRespuestas.add(objRespuesta);
+   }
 }

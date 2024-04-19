@@ -1,5 +1,8 @@
 package co.edu.unicauca.ASST;
 
+import java.util.List;
+
+import org.hibernate.dialect.function.TransactSQLStrFunction;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -41,8 +44,8 @@ public class AsstApplication implements CommandLineRunner {
 	@Override
 	public void run(String... args) throws Exception {
 		// Agregar cuestionario
-		System.out.println("Edwin care chimba");
-		crearCuestionionario();
+		//crearCuestionionario();
+		registrarDocente();
 	}
 
 	private void crearCuestionionario() {
@@ -117,10 +120,24 @@ public class AsstApplication implements CommandLineRunner {
 	}
 
 	private void registrarDocente() {
+		Docente objDocente1 = new Docente(1, "Cedula de ciudadania", "1111", "Juan David", "Beca",
+				"juanbep@unicauca.edu.co", "15/04/2024");
+		Docente objDocente2 = new Docente(2, "Cedula de ciudadania", "1112", "Jesus Edwin", "Adrada",
+				"jesusadrada@unicauca.edu.co", "15/04/2024");
+		Telefono objTelefono1 = new Telefono(1, "Celular", "321003942", objDocente1);
+		Telefono objTelefono2 = new Telefono(2, "Fijo", "8445732", objDocente2);
+		objDocente1.setObjTelefono(objTelefono1);
+		objDocente2.setObjTelefono(objTelefono2);
+		Departamento objDepartamento1 = new Departamento();
+		Departamento objDepartamento2 = new Departamento();
+		objDepartamento1=this.departamentoRepository.findById(1).get();
+		objDepartamento2=this.departamentoRepository.findById(3).get();
+		objDocente1.addDepartamento(objDepartamento1);
+		objDocente2.addDepartamento(objDepartamento2);
+		this.docenteRepository.save(objDocente1);
+		this.docenteRepository.save(objDocente2);
 
 	}
 
 
 }
-
-

@@ -44,20 +44,25 @@ public class AsstApplication implements CommandLineRunner {
 	@Override
 	public void run(String... args) throws Exception {
 		// Agregar cuestionario
-		//crearCuestionionario();
+		crearCuestionionario();
+
+		// Agregar docente
 		registrarDocente();
+
+		// Agregar respuestas
+		//registrarRepuesta();
+
+		// Listar cuestionarios registrados
+		//listarCuestionarios();
+
+		// Muestrar cuestionarios
+		//mostrarCuestionario();
 	}
 
+	// Este método debe crear un cuestionario y las preguntas, y posteriormente debe
+	// almacenar el cuestionario y las preguntas en la base de datos. Se parte de que los tipos de preguntas ya
+	// están creados.
 	private void crearCuestionionario() {
-		// Temporalmente creamos tipos de preguntas falsas
-		// BORRAR DESDE AQUI
-		TipoPregunta tipo1 = new TipoPregunta();
-		tipo1.setNombre("Selección múltiple");
-		tipo1.setDescripcion("Pregunta con opciones de respuesta múltiple");
-		TipoPregunta tipo2 = new TipoPregunta();
-		tipo2.setNombre("Verdadero/Falso");
-		tipo2.setDescripcion("Pregunta con opciones de respuesta Verdadero o Falso");
-		// BORRAR HASTA AQUI
 
 		// Crear cuestionario para almacenar preguntas
 		Cuestionario cuestionario = new Cuestionario();
@@ -81,24 +86,12 @@ public class AsstApplication implements CommandLineRunner {
 		pregunta5.setEnunciado("¿Cuál es el océano más grande?");
 
 		// Relacionar objetos
-		// BORRAR DE AQUI
-		// Pregunta con tipoPregunta
-		tipo1.addPregunta(pregunta1);
-		tipo1.addPregunta(pregunta3);
-		tipo1.addPregunta(pregunta5);
 
-		tipo2.addPregunta(pregunta2);
-		tipo2.addPregunta(pregunta4);
-
-		this.tipoPreguntaRepository.save(tipo1);
-		this.tipoPreguntaRepository.save(tipo2);
-		// BORRAR HASTA AQUI
-
-		pregunta1.setObjTipoPregunta(tipo1);
-		pregunta2.setObjTipoPregunta(tipo2);
-		pregunta3.setObjTipoPregunta(tipo1);
-		pregunta4.setObjTipoPregunta(tipo2);
-		pregunta5.setObjTipoPregunta(tipo1);
+		pregunta1.setObjTipoPregunta(this.tipoPreguntaRepository.findById(1).get());
+		pregunta2.setObjTipoPregunta(this.tipoPreguntaRepository.findById(2).get());
+		pregunta3.setObjTipoPregunta(this.tipoPreguntaRepository.findById(1).get());
+		pregunta4.setObjTipoPregunta(this.tipoPreguntaRepository.findById(2).get());
+		pregunta5.setObjTipoPregunta(this.tipoPreguntaRepository.findById(1).get());
 
 		// Cuestionario con pregunta
 		pregunta1.setObjCuestionario(cuestionario);
@@ -119,6 +112,9 @@ public class AsstApplication implements CommandLineRunner {
 		this.cuestionarioRepository.save(cuestionario);
 	}
 
+	// Este método permite registrar un docente y asociarlo a un departamento, y
+	// posteriormente debe almacenar el docente y el departamento asociado en la base de datos. Se parte de que
+	// los departamentos ya están creados.
 	private void registrarDocente() {
 		Docente objDocente1 = new Docente(1, "Cedula de ciudadania", "1111", "Juan David", "Beca",
 				"juanbep@unicauca.edu.co", "15/04/2024");
@@ -139,5 +135,25 @@ public class AsstApplication implements CommandLineRunner {
 
 	}
 
+	// Este método debe permitir registrar las respuestas de un
+	// cuestionario por un determinado docente. Considere que el docente asociado está almacenado en la base de
+	// datos.
+	private void registrarRepuesta(){
 
+	}
+
+	// Este método debe mostrar los cuestionarios, preguntas asociadas
+	// y tipos de preguntas. Utilice el ligado eager para traer los tipos de preguntas y cuestionarios.
+	private void listarCuestionarios(){
+
+	}
+
+	// Este método debe mostrar las respuestas de un cuestionario que
+	// fue registrado en el sistema. Por cada cuestionario se deben mostrar el docente, cuestionario, preguntas, tipos
+	// de preguntas y respuestas asociadas. Utilice el ligado eager para traer los tipos de preguntas y cuestionarios.
+	// Utilice el ligado lazy para traer las preguntas ligadas a una respuesta. Puede utilizar el repositorio de respuesta
+	// para traer la información asociada.
+	private void mostrarCuestionario(){
+
+	}
 }

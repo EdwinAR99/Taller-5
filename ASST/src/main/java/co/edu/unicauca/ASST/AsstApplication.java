@@ -44,7 +44,8 @@ public class AsstApplication implements CommandLineRunner {
 	@Override
 	public void run(String... args) throws Exception {
 		// Agregar cuestionario
-		crearCuestionionario();
+		//crearCuestionionario();
+		registrarDocente();
 	}
 
 	private void crearCuestionionario() {
@@ -127,9 +128,14 @@ public class AsstApplication implements CommandLineRunner {
 		Telefono objTelefono2 = new Telefono(2, "Fijo", "8445732", objDocente2);
 		objDocente1.setObjTelefono(objTelefono1);
 		objDocente2.setObjTelefono(objTelefono2);
-		Departamento objDepartamento = new Departamento();
-		objDepartamento.setIdDepartamento(1);
-		objDocente1.addDepartamento(objDepartamento);
+		Departamento objDepartamento1 = new Departamento();
+		Departamento objDepartamento2 = new Departamento();
+		objDepartamento1=this.departamentoRepository.findById(1).get();
+		objDepartamento2=this.departamentoRepository.findById(3).get();
+		objDocente1.addDepartamento(objDepartamento1);
+		objDocente2.addDepartamento(objDepartamento2);
+		this.docenteRepository.save(objDocente1);
+		this.docenteRepository.save(objDocente2);
 
 	}
 

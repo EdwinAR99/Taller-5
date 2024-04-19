@@ -17,10 +17,10 @@ public class Docente extends Persona {
    @Column
    private String vinculacion;
 
-   @OneToOne(mappedBy = "objDocente")
+   @OneToOne(mappedBy = "objDocente",cascade = {CascadeType.ALL})
    private Telefono objTelefono;
 
-   @ManyToMany(fetch = FetchType.EAGER)
+   @ManyToMany(fetch = FetchType.EAGER,cascade = {CascadeType.PERSIST})
    @JoinTable(name = "departamentoDocentes", joinColumns = @JoinColumn(name = "idPersona"), inverseJoinColumns = @JoinColumn(name = "idDepartamento"))
    private List<Departamento> listDepartamentos;
 
@@ -42,6 +42,8 @@ public class Docente extends Persona {
       super(idPersona, tipoIdentificacion, numeroIdentificacion, nombres, apellidos);
       this.correo = correo;
       this.vinculacion = vinculacion;
+      this.listDepartamentos = new ArrayList<Departamento>();
+      this.listRespuestas = new ArrayList<Respuesta>();
    }
 
    public void addDepartamento(Departamento dpto) {

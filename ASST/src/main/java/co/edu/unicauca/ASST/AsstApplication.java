@@ -58,8 +58,8 @@ public class AsstApplication implements CommandLineRunner {
 		// Listar cuestionarios registrados
 		listarCuestionarios();
 
-		// Muestrar cuestionarios
-		//mostrarCuestionario();
+		// Muestrar cuestionario por ID
+		mostrarCuestionario(1);
 	}
 
 	// Este método debe crear un cuestionario y las preguntas, y posteriormente debe
@@ -222,7 +222,45 @@ public class AsstApplication implements CommandLineRunner {
 	// de preguntas y respuestas asociadas. Utilice el ligado eager para traer los tipos de preguntas y cuestionarios.
 	// Utilice el ligado lazy para traer las preguntas ligadas a una respuesta. Puede utilizar el repositorio de respuesta
 	// para traer la información asociada.
-	private void mostrarCuestionario(){
+	private void mostrarCuestionario(int idCuestionario) {
+		// Buscar el cuestionario por su ID
+		Optional<Cuestionario> cuestionarioOptional = this.cuestionarioRepository.findById(idCuestionario);
 
+		// Verificar si el cuestionario fue encontrado
+		if (cuestionarioOptional.isPresent()) {
+			Cuestionario objCuestionario = cuestionarioOptional.get();
+	
+			// Mostrar información del cuestionario
+			System.out.println("\u001B[34m===================================\u001B[0m");
+			System.out.println("\u001B[31mCuestionario #" + objCuestionario.getIdCuestionario());
+			System.out.println("\u001B[34m-----------------------------------\u001B[0m");
+			System.out.println("Título: " + objCuestionario.getTitulo());
+			System.out.println("Descripción: " + objCuestionario.getDescripcion());
+			System.out.println("\u001B[34m-----------------------------------\u001B[0m");
+	
+			// Recorrer todas las preguntas del cuestionario
+			for (Pregunta objPregunta : objCuestionario.getListPreguntas()) {
+				// Mostrar información tipo de pregunta
+				System.out.println("Tipo de Pregunta: " + objPregunta.getObjTipoPregunta().getNombre());
+				System.out.println(
+						"Descripción del Tipo de Pregunta: " + objPregunta.getObjTipoPregunta().getDescripcion());
+				// Mostrar información de la pregunta
+				System.out.println("\u001B[34m-----------------------------------\u001B[0m");
+				System.out.println("Pregunta #" + objPregunta.getIdPregunta());
+				System.out.println("Enunciado: " + objPregunta.getEnunciado());
+				System.out.println("\u001B[34m-----------------------------------\u001B[0m");
+				// Obtener repositorio de lista de respuestas
+				for (Respuesta objRespuesta : objPregunta.getListaRespuestas()) {
+					// Mostrar las respuestas y el docente que la repondió
+					System.out.println("\u001B[34m-----------------------------------\u001B[0m");
+					System.out.println("\u001B[31mDocente: \u001B[0m" + objRespuesta.getObjPersona().getNombres());
+					System.out.println("\u001B[31mRespuesta: \u001B[0m" + objRespuesta.getDescripcion());
+					System.out.println("\u001B[34m-----------------------------------\u001B[0m");
+				}
+			}
+			System.out.println("\u001B[34m===================================\u001B[0m");
+		} else {
+			System.out.println("No se encontró ningún cuestionario con el ID especificado.");
+		}
 	}
 }

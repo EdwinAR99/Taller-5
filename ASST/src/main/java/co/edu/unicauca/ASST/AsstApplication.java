@@ -47,7 +47,7 @@ public class AsstApplication implements CommandLineRunner {
 	@Override
 	public void run(String... args) throws Exception {
 		// Agregar cuestionario
-		crearCuestionionario();
+		crearCuestionario();
 
 		// Agregar docente
 		registrarDocente();
@@ -65,7 +65,7 @@ public class AsstApplication implements CommandLineRunner {
 	// Este método debe crear un cuestionario y las preguntas, y posteriormente debe
 	// almacenar el cuestionario y las preguntas en la base de datos. Se parte de que los tipos de preguntas ya
 	// están creados.
-	private void crearCuestionionario() {
+	private void crearCuestionario() {
 
 		// Crear cuestionario para almacenar preguntas
 		Cuestionario cuestionario = new Cuestionario();

@@ -56,7 +56,7 @@ public class AsstApplication implements CommandLineRunner {
 		registrarRepuesta();
 
 		// Listar cuestionarios registrados
-		//listarCuestionarios();
+		listarCuestionarios();
 
 		// Muestrar cuestionarios
 		//mostrarCuestionario();
@@ -195,6 +195,26 @@ public class AsstApplication implements CommandLineRunner {
 	// y tipos de preguntas. Utilice el ligado eager para traer los tipos de preguntas y cuestionarios.
 	private void listarCuestionarios(){
 
+		Iterable<Cuestionario>listCuestionario=this.cuestionarioRepository.findAll();
+
+		for(Cuestionario cuestionario: listCuestionario){
+
+			System.out.println("---------------------------------------");
+			System.out.println("Titulo : " + cuestionario.getTitulo());
+			System.out.println("Descripcion : "+cuestionario.getDescripcion());
+			Iterable<Pregunta> listPregunta=cuestionario.getListPreguntas();
+			
+			for(Pregunta pregunta :listPregunta){
+
+				System.out.println("---------------------------------------");
+				System.out.println("Enunciado : " +pregunta.getEnunciado());
+				TipoPregunta tipoPregunta=pregunta.getObjTipoPregunta();
+				System.out.println("Nombre : "+tipoPregunta.getNombre()  );
+				System.out.println("Descripcion : "+tipoPregunta.getDescripcion());
+
+			}
+
+		}
 	}
 
 	// Este método debe mostrar las respuestas de un cuestionario que

@@ -165,17 +165,42 @@ public class AsstApplication implements CommandLineRunner {
 		respuesta5.setDescripcion("Océano Pacífico");
 
 		// Relacionar las entidades
-		respuesta1.setObjPregunta(this.preguntaRepository.findById(1).get());
-		respuesta2.setObjPregunta(this.preguntaRepository.findById(2).get());
-		respuesta3.setObjPregunta(this.preguntaRepository.findById(3).get());
-		respuesta4.setObjPregunta(this.preguntaRepository.findById(4).get());
-		respuesta5.setObjPregunta(this.preguntaRepository.findById(5).get());
+		// Pregunta con respuesta
+		Pregunta pregunta1 = this.preguntaRepository.findById(1).get();
+		respuesta1.setObjPregunta(pregunta1);
+		pregunta1.addRespuesta(respuesta1);
 
+		Pregunta pregunta2 = this.preguntaRepository.findById(2).get();
+		respuesta2.setObjPregunta(pregunta2);
+		pregunta2.addRespuesta(respuesta2);
+
+		Pregunta pregunta3 = this.preguntaRepository.findById(3).get();
+		respuesta3.setObjPregunta(pregunta3);
+		pregunta3.addRespuesta(respuesta3);
+
+		Pregunta pregunta4 = this.preguntaRepository.findById(4).get();
+		respuesta4.setObjPregunta(pregunta4);
+		pregunta4.addRespuesta(respuesta4);
+
+		Pregunta pregunta5 = this.preguntaRepository.findById(5).get();
+		respuesta5.setObjPregunta(pregunta5);
+		pregunta5.addRespuesta(respuesta5);
+
+		// Respuesta con docente
 		respuesta1.setObjPersona(docente.get());
+		docente.get().addRespuesta(respuesta1);
+
 		respuesta2.setObjPersona(docente.get());
+		docente.get().addRespuesta(respuesta2);
+
 		respuesta3.setObjPersona(docente.get());
+		docente.get().addRespuesta(respuesta3);
+
 		respuesta4.setObjPersona(docente.get());
+		docente.get().addRespuesta(respuesta4);
+
 		respuesta5.setObjPersona(docente.get());
+		docente.get().addRespuesta(respuesta5);
 
 		// Guardar las respuestas
 

@@ -1,6 +1,9 @@
 package co.edu.unicauca.ASST;
 
+import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
+import java.util.Optional;
 
 import org.hibernate.dialect.function.TransactSQLStrFunction;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -50,7 +53,7 @@ public class AsstApplication implements CommandLineRunner {
 		registrarDocente();
 
 		// Agregar respuestas
-		//registrarRepuesta();
+		registrarRepuesta();
 
 		// Listar cuestionarios registrados
 		//listarCuestionarios();
@@ -139,6 +142,52 @@ public class AsstApplication implements CommandLineRunner {
 	// cuestionario por un determinado docente. Considere que el docente asociado está almacenado en la base de
 	// datos.
 	private void registrarRepuesta(){
+		Optional<Docente> docente = this.docenteRepository.findById(1);
+
+		if (docente.isEmpty()) {
+			return;
+		}
+
+		// Crear respuestas para las preguntas del primer cuestionario
+		Respuesta respuesta1 = new Respuesta();
+		respuesta1.setDescripcion("París");
+
+		Respuesta respuesta2 = new Respuesta();
+		respuesta2.setDescripcion("Verdadero");
+
+		Respuesta respuesta3 = new Respuesta();
+		respuesta3.setDescripcion("4");
+
+		Respuesta respuesta4 = new Respuesta();
+		respuesta4.setDescripcion("Falso");
+
+		Respuesta respuesta5 = new Respuesta();
+		respuesta5.setDescripcion("Océano Pacífico");
+
+		// Relacionar las entidades
+		respuesta1.setObjPregunta(this.preguntaRepository.findById(1).get());
+		respuesta2.setObjPregunta(this.preguntaRepository.findById(2).get());
+		respuesta3.setObjPregunta(this.preguntaRepository.findById(3).get());
+		respuesta4.setObjPregunta(this.preguntaRepository.findById(4).get());
+		respuesta5.setObjPregunta(this.preguntaRepository.findById(5).get());
+
+		respuesta1.setObjPersona(docente.get());
+		respuesta2.setObjPersona(docente.get());
+		respuesta3.setObjPersona(docente.get());
+		respuesta4.setObjPersona(docente.get());
+		respuesta5.setObjPersona(docente.get());
+
+		// Guardar las respuestas
+
+		List<Respuesta> listRespuestas = new ArrayList<>();
+
+		listRespuestas.add(respuesta1);
+		listRespuestas.add(respuesta2);
+		listRespuestas.add(respuesta3);
+		listRespuestas.add(respuesta4);
+		listRespuestas.add(respuesta5);
+
+		this.respuestaRepository.saveAll(listRespuestas);
 
 	}
 

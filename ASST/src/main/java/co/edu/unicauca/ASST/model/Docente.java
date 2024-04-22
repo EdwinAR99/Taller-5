@@ -11,7 +11,7 @@ import java.util.List;
 @Setter
 public class Docente extends Persona {
 
-   @Column
+   @Column(unique = true)
    private String correo;
 
    @Column

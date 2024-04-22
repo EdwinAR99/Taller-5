@@ -11,10 +11,10 @@ public class Telefono {
    @GeneratedValue(strategy = GenerationType.IDENTITY)
    private int idTelefono;
 
-   @Column
+   @Column(nullable = false)
    private String tipoTelefono;
 
-   @Column
+   @Column(nullable = false)
    private String numero;
 
    @OneToOne(cascade = {CascadeType.PERSIST })

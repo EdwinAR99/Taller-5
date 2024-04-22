@@ -18,10 +18,10 @@ public class Cuestionario {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int idCuestionario;
 
-    @Column
+    @Column(nullable = false)
     private String titulo;
 
-    @Column
+    @Column(nullable = false)
     private String descripcion;
 
     @OneToMany(fetch = FetchType.EAGER, cascade = {CascadeType.PERSIST, CascadeType.REMOVE}, mappedBy = "objCuestionario")

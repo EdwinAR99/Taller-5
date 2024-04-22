@@ -14,7 +14,7 @@ public class Respuesta {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int idRespuesta;
 
-    @Column
+    @Column(nullable = false)
     private String descripcion;
 
     @ManyToOne

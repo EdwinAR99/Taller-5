@@ -17,10 +17,10 @@ public class TipoPregunta {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int idTipoPregunta;
 
-    @Column
+    @Column(nullable = false, unique = false)
     private String nombre;
 
-    @Column
+    @Column(nullable = false)
     private String descripcion;
 
     @OneToMany(fetch = FetchType.EAGER, cascade = {CascadeType.MERGE} , mappedBy = "objTipoPregunta")

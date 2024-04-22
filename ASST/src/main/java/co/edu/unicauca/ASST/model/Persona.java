@@ -12,16 +12,16 @@ public class Persona {
    @GeneratedValue(strategy = GenerationType.IDENTITY)
    private int idPersona;
 
-   @Column
+   @Column(nullable = false)
    private String tipoIdentificacion;
 
-   @Column
+   @Column(unique = true, nullable = false)
    private String numeroIdentificacion;
 
-   @Column
+   @Column(nullable = false)
    private String nombres;
 
-   @Column
+   @Column(nullable = false)
    private String apellidos;
 
 }

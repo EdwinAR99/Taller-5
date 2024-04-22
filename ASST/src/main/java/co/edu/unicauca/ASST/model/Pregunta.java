@@ -17,7 +17,7 @@ public class Pregunta {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int idPregunta;
 
-    @Column
+    @Column(nullable = false)
     private String enunciado;
 
     @ManyToOne

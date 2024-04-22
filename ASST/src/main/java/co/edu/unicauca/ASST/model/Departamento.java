@@ -14,10 +14,10 @@ public class Departamento {
    @GeneratedValue(strategy = GenerationType.IDENTITY)
    private int idDepartamento;
 
-   @Column
+   @Column(nullable = false, unique = false)
    private String nombreDep;
 
-   @Column
+   @Column(nullable = false)
    private String descripcion;
 
    @ManyToMany(fetch = FetchType.EAGER,cascade = {CascadeType.PERSIST})
